@@ -3,147 +3,250 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Netflix-style Layout</title>
+  <title>Netflix • Static Clone (Study)</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="nav" role="navigation" aria-label="Global">
-    <div class="logo" aria-label="Logo">NETFLIX</div>
-    <nav class="nav-menu" aria-label="Primary">
-      <a href="#">홈</a>
-      <a href="#">시리즈</a>
-      <a href="#">영화</a>
-      <a href="#">NEW! 요즘 대세</a>
-      <a href="#">내가 찜한 리스트</a>
-      <a href="#">언어별로 찾아보기</a>
-    </nav>
-    <div class="nav-right">
-      <button class="icon-btn" aria-label="검색">🔍</button>
-      <div class="avatar" aria-label="프로필"></div>
-    </div>
-  </header>
+  <a class="skip-link" href="#main">본문 바로가기</a>
 
-  <!-- Hero -->
-  <section
-    class="hero"
-    aria-label="Featured"
-    style="--hero-img: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop');"
-  >
-    <div class="hero-badge">
-      <span class="badge-n">N</span>
-      <span class="badge-top">오늘 시리즈 순위 2위</span>
-      <span class="age">15+</span>
-    </div>
-    <h1 class="hero-title">폭군의 셰프</h1>
-    <p class="hero-desc">
-      시간을 거슬러 과거로 가게 된 현대의 셰프가 폭군으로 악명 높은 왕을 만난다.
-      그녀는 탁월한 요리 솜씨로 왕의 마음과 입맛을 모두 사로잡을 수 있을까?
-    </p>
-    <div class="hero-actions">
-      <button class="btn primary" aria-label="재생">▶ 재생</button>
-      <button class="btn secondary" aria-label="상세 정보">ℹ 상세 정보</button>
-    </div>
-  </section>
+  <div class="page">
+    <!-- Header -->
+    <header class="header" role="banner">
+      <a href="#" class="brand brand--logo" aria-label="Netflix 홈">
+        <img src="images/titlelogo-Photoroom.png" alt="" />
+      </a>
 
-  <!-- Rows -->
-  <main class="section" aria-label="Rows of content">
-    <!-- Row 1 -->
-    <section class="row" aria-labelledby="row-1-title">
-      <h2 id="row-1-title" class="row-title">발견구</h2>
-      <div class="scroller">
-        <article class="card">
-          <span class="micro-badge">TOP 10</span>
-          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop" alt="셰프 포스터" />
-          <div class="card-title">셰프</div>
-        </article>
-        <article class="card">
-          <span class="micro-badge">신작</span>
-          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1200&auto=format&fit=crop" alt="에스콰이어 포스터" />
-          <div class="card-title">에스콰이어</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c2e59cf0?q=80&w=1200&auto=format&fit=crop" alt="트리거 포스터" />
-          <div class="card-title">트리거</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?q=80&w=1200&auto=format&fit=crop" alt="사막의 그림자 포스터" />
-          <div class="card-title">사막의 그림자</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="뜻밖의 왕자 포스터" />
-          <div class="card-title">뜻밖의 왕자</div>
-        </article>
+      <nav class="nav" aria-label="주요">
+        <ul class="nav__list">
+          <li><a href="#">홈</a></li>
+          <li><a href="#">시리즈</a></li>
+          <li><a href="#">영화</a></li>
+          <li><a href="#">NEW! 요즘 대세 콘텐츠</a></li>
+          <li><a href="#">내가 찜한 리스트</a></li>
+          <li><a href="#">언어별로 찾아보기</a></li>
+        </ul>
+      </nav>
+
+      <!-- New: right-side actions -->
+      <div class="actions" role="group" aria-label="사용자 작업">
+        <!-- Search icon button -->
+        <button type="button" class="icon-btn" aria-label="검색 열기" title="검색">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 2a5.5 5.5 0 1 0 3.89 9.39l4.36 4.36a1 1 0 0 0 1.41-1.41l-4.36-4.36A5.5 5.5 0 0 0 10.5 5z"/>
+          </svg>
+        </button>
+
+        <!-- Kids link -->
+        <a href="#" class="action-link">키즈</a>
+
+        <!-- Bell with badge -->
+        <button type="button" class="icon-btn notif" aria-label="알림 10개" title="알림">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm7-6v-5a7 7 0 1 0-14 0v5l-2 2v1h20v-1l-2-2z"/>
+          </svg>
+          <span class="badge" aria-hidden="true">10</span>
+        </button>
+
+        <!-- Profile avatar + caret -->
+        <button type="button" class="profile" aria-label="프로필 메뉴 열기" title="프로필">
+          <img src="./images/user_icon.png" alt="" />
+          <svg class="caret" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 10l5 5 5-5H7z"/>
+          </svg>
+        </button>
       </div>
-    </section>
 
-    <!-- Row 2 -->
-    <section class="row" aria-labelledby="row-2-title">
-      <h2 id="row-2-title" class="row-title">님이 시청 중인 콘텐츠</h2>
-      <div class="scroller">
-        <article class="card">
-          <span class="micro-badge">이어보기</span>
-          <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=1200&auto=format&fit=crop" alt="드라마 오피스 포스터" />
-          <div class="card-title">드라마 오피스</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="스타트업 포스터" />
-          <div class="card-title">스타트업</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c2e59cf0?q=80&w=1200&auto=format&fit=crop" alt="미스터 셜록 포스터" />
-          <div class="card-title">미스터 셜록</div>
-        </article>
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop" alt="난로 포스터" />
-          <div class="card-title">난로</div>
-        </article>
-      </div>
-    </section>
+    </header>
 
-    <!-- Row 3: TOP 10 -->
-    <section class="row" aria-labelledby="row-3-title">
-      <h2 id="row-3-title" class="row-title">오늘 대한민국의 TOP 10 시리즈</h2>
-      <div class="scroller">
-        <div class="rank-card">
-          <div class="rank">1</div>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Top 1 포스터" />
-            <div class="card-title">검은 역사</div>
-          </article>
+    <main id="main" class="main" tabindex="-1">
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <h1 id="hero-title" class="hero__title">폭군의 셰프</h1>
+          <div class="rankline" aria-label="오늘 시리즈 순위 2위">
+            <span class="badge-t10" aria-hidden="true">
+              <span class="badge-t10__top">TOP</span>
+              <span class="badge-t10__num">10</span>
+            </span>
+            <span class="rankline__label">오늘 시리즈 순위 <b class="rankline__em">2위</b></span>
+          </div>
+          <p class="hero__desc">
+            시간을 거슬러 과거로 간 현대의 셰프가 궁중 요리에 도전한다.
+            특별한 요리 솜씨와 솔직한 매력으로 모두의 마음을 사로잡을 수 있을까?
+          </p>
+          <div class="hero__actions">
+            <a href="#" class="btn btn-primary" aria-label="재생">▶ 재생</a>
+            <a href="#" class="btn btn-secondary" aria-label="상세 정보">ℹ 상세 정보</a>
+          </div>
         </div>
-        <div class="rank-card">
-          <div class="rank">2</div>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1515165562835-c3b8c2e59cf0?q=80&w=1200&auto=format&fit=crop" alt="Top 2 포스터" />
-            <div class="card-title">폭군의 셰프</div>
-          </article>
-        </div>
-        <div class="rank-card">
-          <div class="rank">3</div>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=1200&auto=format&fit=crop" alt="Top 3 포스터" />
-            <div class="card-title">에스콰이어</div>
-          </article>
-        </div>
-        <div class="rank-card">
-          <div class="rank">4</div>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1200&auto=format&fit=crop" alt="Top 4 포스터" />
-            <div class="card-title">트리거</div>
-          </article>
-        </div>
-        <div class="rank-card">
-          <div class="rank">5</div>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop" alt="Top 5 포스터" />
-            <div class="card-title">앰마</div>
-          </article>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="footer-space" aria-hidden="true"></div>
-  </main>
+
+      <section class="category" aria-labelledby="sec-kdrama">
+        <h2 id="sec-kdrama" class="section-title">밥친구</h2>
+        <ul class="card-row">
+          <li class="card"><a href="#" class="card__link">
+            <span class="corner-badge" aria-label="Top 10">
+              <span class="corner-badge__top">TOP</span>
+              <span class="corner-badge__num">10</span>
+            </span>
+            <img class="card__img" src="images/main_poster.jpg" alt="청춘 로맨스 포스터"/><span class="card__title"></span>
+            <div class="cta-bar" role="group" aria-label="새로운 에피소드">
+              <span class="cta-chip cta-chip--red">새로운 에피소드</span>
+              <span class="cta-chip cta-chip--white">지금 시청하기</span>
+            </div>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <span class="corner-badge" aria-label="Top 10">
+              <span class="corner-badge__top">TOP</span>
+              <span class="corner-badge__num">10</span>
+            </span>
+            <img class="card__img" src="images/asqu.avif" alt="사극 로맨스 포스터"/><span class="card__title"></span>
+            <div class="cta-bar" role="group" aria-label="새로운 에피소드">
+              <span class="cta-chip cta-chip--red">새로운 에피소드</span>
+              <span class="cta-chip cta-chip--white">지금 시청하기</span>
+            </div>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <span class="corner-nflx" aria-hidden="true">
+              <img src="images/Netflix-Symbol-Photoroom.png" alt="">
+            </span>
+            <span class="corner-badge" aria-label="Top 10">
+              <span class="corner-badge__top">TOP</span>
+              <span class="corner-badge__num">10</span>
+            </span>
+            <img class="card__img" src="images/trigger.jpg" alt="오피스 로맨스 포스터"/><span class="card__title"></span>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/metnis.jpg" alt="치유물 포스터"/><span class="card__title"></span>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <span class="corner-nflx" aria-hidden="true">
+              <img src="images/Netflix-Symbol-Photoroom.png" alt="">
+            </span>
+            <img class="card__img" src="images/lier.jpg" alt="음악 드라마 포스터"/><span class="card__title"></span>
+            <div class="cta-bar" role="group" aria-label="새로운 에피소드">
+              <span class="cta-chip cta-chip--red">새로운 에피소드</span>
+              <span class="cta-chip cta-chip--white">지금 시청하기</span>
+            </div>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="https://images.unsplash.com/photo-1499244571948-7ccddb3583f1?w=1200&auto=format&fit=crop&q=80" alt="가족 드라마 포스터"/><span class="card__title"></span>
+          </a></li>
+        </ul>
+      </section>
+
+      <!-- Category Sections -->
+      <section class="category" aria-labelledby="sec-kdrama">
+        <h2 id="sec-kdrama" class="section-title">• 님이 시청 중인 콘텐츠</h2>
+        <ul class="card-row">
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/try.jpeg" alt="음악 드라마 포스터"/><span class="card__title"></span>
+            <div class="cta-bar" role="group" aria-label="새로운 에피소드">
+              <span class="cta-chip cta-chip--red">새로운 에피소드</span>
+              <span class="cta-chip cta-chip--white">지금 시청하기</span>
+            </div>
+          </a></li>
+        </ul>
+      </section>
+
+      <section class="category" aria-labelledby="sec-kdrama">
+        <h2 id="sec-kdrama" class="section-title">연애 세포를 깨우는 작품들</h2>
+        <ul class="card-row">
+          <li class="card"><a href="#" class="card__link">
+            <span class="corner-badge" aria-label="Top 10">
+              <span class="corner-badge__top">TOP</span>
+              <span class="corner-badge__num">10</span>
+            </span>
+            <span class="corner-nflx" aria-hidden="true">
+              <img src="images/Netflix-Symbol-Photoroom.png" alt="">
+            </span>
+            <img class="card__img" src="images/goback.jpeg" alt="청춘 로맨스 포스터"/><span class="card__title"></span>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/startup.jpeg" alt="사극 로맨스 포스터"/><span class="card__title"></span>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/sunshine.jpg" alt="오피스 로맨스 포스터"/><span class="card__title"></span>
+            <div class="overlay-tags">
+              <span class="pill pill--red">최신 등록</span>
+            </div>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/none.png" alt="치유물 포스터"/><span class="card__title"></span>
+          </a></li>
+          <li class="card"><a href="#" class="card__link">
+            <img class="card__img" src="images/someday.jpg" alt="음악 드라마 포스터"/><span class="card__title"></span>
+          </a></li>
+        </ul>
+      </section>
+
+      <section class="category" aria-labelledby="sec-top10-side">
+        <h2 id="sec-top10-side" class="section-title">오늘 대한민국의 <b>TOP 10</b> 시리즈</h2>
+        <ul class="top10-side-row">
+          <li class="t10">
+            <span class="t10__num" aria-hidden="true">1</span>
+            <a href="#" class="t10__poster">
+              <img class="poster poster-2x3" src="images/startup.jpeg" alt="1위 포스터" />
+              <div class="ribbons">
+                <span class="pill pill--red">새로운 에피소드</span>
+                <span class="pill pill--white">지금 시청하기</span>
+              </div>
+            </a>
+          </li>
+          <li class="t10">
+            <span class="t10__num" aria-hidden="true">2</span>
+            <a href="#" class="t10__poster">
+              <img class="poster poster-2x3" src="images/main_poster.jpg" alt="1위 포스터" />
+              <div class="ribbons">
+                <span class="pill pill--red">새로운 에피소드</span>
+                <span class="pill pill--white">지금 시청하기</span>
+              </div>
+            </a>
+          </li>
+          <li class="t10">
+            <span class="t10__num" aria-hidden="true">3</span>
+            <a href="#" class="t10__poster">
+              <img class="poster poster-2x3" src="images/asqu.avif" alt="1위 포스터" />
+              <div class="ribbons">
+                <span class="pill pill--red">새로운 에피소드</span>
+                <span class="pill pill--white">지금 시청하기</span>
+              </div>
+            </a>
+          </li>
+          <li class="t10">
+            <span class="t10__num" aria-hidden="true">4</span>
+            <a href="#" class="t10__poster">
+              <img class="poster poster-2x3" src="images/trigger.jpg" alt="1위 포스터" />
+              <div class="overlay-tags">
+                <span class="pill pill--red">최신 등록</span>
+              </div>
+            </a>
+          </li>
+          <li class="t10">
+            <span class="t10__num" aria-hidden="true">5</span>
+            <a href="#" class="t10__poster">
+              <img class="poster poster-2x3" src="images/lier.jpg" alt="1위 포스터" />
+              <div class="overlay-tags">
+                <span class="pill pill--red">새로운 에피소드</span>
+              </div>
+            </a>
+          </li>
+          <!-- 2~5 반복: 숫자/이미지 변경 -->
+        </ul>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p class="footer__small">이 페이지는 학습용 정적 클론입니다. Netflix와 무관하며, 링크/재생은 동작하지 않습니다.</p>
+      <ul class="footer__links">
+        <li><a href="#">고객 센터</a></li>
+        <li><a href="#">이용 약관</a></li>
+        <li><a href="#">개인정보</a></li>
+        <li><a href="#">회사 정보</a></li>
+      </ul>
+    </footer>
+  </div>
 </body>
 </html>
