@@ -663,3 +663,130 @@ a{ color: inherit; text-decoration: none; }
 .profile-popover::before{
   right: 24px;   /* line up with the profile button */
 }
+
+/* Pager (container) */
+.pager{
+  display: flex;                /* block-level so it lays out reliably */
+  justify-content: center;      /* center it */
+  gap: 8px;
+  margin: 16px 0;
+  /* debug aid (optional): outline: 1px dashed yellow; */
+}
+
+/* Each small box */
+.pager__box{
+  display: block;               /* ensure width/height apply */
+  width: 32px;
+  height: 6px;
+  border-radius: 3px;
+  background: #ffffff;          /* make it obvious first */
+  opacity: 0.6;                 /* slightly dim; tweak as you like */
+}
+
+.section-bar{
+  display: flex;
+  align-items: center;          /* vertical center → same height line */
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: var(--space-2);
+}
+
+/* keep pager small and right-aligned */
+.pager{
+  display: flex;
+  gap: 8px;
+}
+
+.pager__box_on{
+  display: block;
+  width: 32px;
+  height: 6px;
+  border-radius: 3px;
+  background: #fff;
+  opacity: .6;
+}
+
+.pager__box_off{
+  display: block;
+  width: 32px;
+  height: 6px;
+  border-radius: 3px;
+  background: #fff;
+  opacity: .2;
+}
+
+/* ----- Slider layout (밥친구 섹션 전용) ----- */
+.slider{
+  position: relative;
+}
+
+/* turn the row into a horizontal track with 6 cards per view */
+.card-row--slider{
+  display: flex;                        /* from grid -> flex row */
+  gap: var(--space-2);
+  overflow: hidden;                     /* hide overflow; we scroll it */
+  scroll-behavior: smooth;              /* smooth scroll for JS scrollBy */
+  padding-bottom: 2px;                  /* avoid shadow clipping */
+}
+
+/* each card keeps a fixed width so exactly 6 fit per view */
+.card-row--slider > .card{
+  flex: 0 0 calc((100% - (var(--space-2) * 5)) / 6);
+}
+
+/* ----- Prev/Next buttons ----- */
+.slider__btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  cursor: pointer;
+
+  /* hidden by default; appear on hover/focus */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, background .18s ease, transform .18s ease;
+  z-index: 5;
+}
+
+.slider:hover .slider__btn,
+/* hidden by default */
+.slider .slider__btn{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, background .18s ease;
+}
+
+/* show only when hovered OR when *visibly* focused (keyboard users) */
+.slider:hover .slider__btn,
+.slider:has(.slider__btn:focus-visible) .slider__btn,
+.slider:has(.card-row--slider :focus-visible) .slider__btn{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slider__btn:hover{
+  background: rgba(0,0,0,.60);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider__btn--prev{ left: -6px; }  /* pull slightly outside the row */
+.slider__btn--next{ right: -6px; }
+
+.card-row--slider{
+  scroll-snap-type: x mandatory;
+}
+
+.card-row--slider > .card{
+  scroll-snap-align: start;
+}
