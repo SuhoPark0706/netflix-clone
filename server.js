@@ -22,7 +22,7 @@ app.get('/api/likes', async (req, res) => {
 
 app.get('/api/images', async (_req, res) => {
   try {
-    const entries = await fs.readdir(IMAGES_DIR, { withFileTypes: true });
+    const entries = await fs.readdir('./', { withFileTypes: true });
     const allow = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif']);
     const files = entries
       .filter(d => d.isFile())

@@ -2,15 +2,21 @@
    Dynamic images + Slider + Likes (full script.js)
    ============================ */
 
+// const { takeCoverage } = require("v8");
+
 /* ---------- 1) Server images → render cards ---------- */
 async function fetchServerImages() {
   const res = await fetch('/api/images');
   if (!res.ok) throw new Error('Failed to fetch /api/images');
+  console.log(res)
   return res.json(); // [{ url, alt }, ...]
 }
 
 function renderCardsIntoTrack(files) {
   const track = document.querySelector('[data-track]');
+
+  
+
   if (!track) return;
 
   const cardHTML = files.map(f => `
@@ -34,7 +40,7 @@ function renderCardsIntoTrack(files) {
 async function loadServerImagesAndHydrate() {
   try {
     const files = await fetchServerImages();
-    renderCardsIntoTrack(files);
+    // renderCardsIntoTrack(files);
     hydrateLikedStates();
     document.dispatchEvent(new Event('images:ready'));
   } catch (e) {
