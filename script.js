@@ -12,11 +12,16 @@ async function fetchServerImages() {
   return res.json(); // [{ url, alt }, ...]
 }
 
+const img_list = [
+  'main_poster.jpg',
+  'trigger.jpg',
+  'asqu.avif',
+  'lier.jpg'
+];
+
+
 function renderCardsIntoTrack(files) {
   const track = document.querySelector('[data-track]');
-
-  
-
   if (!track) return;
 
   const cardHTML = files.map(f => `
@@ -27,7 +32,7 @@ function renderCardsIntoTrack(files) {
             <path d="M12.1 21.35l-1.1-.99C5.14 15.28 2 12.36 2 8.98 2 6.42 4.06 4.5 6.6 4.5c1.54 0 3.04.73 4 1.87a5.09 5.09 0 0 1 4-1.87c2.54 0 4.6 1.92 4.6 4.48 0 3.38-3.14 6.3-8.9 11.38l-1.2 1z"/>
           </svg>
         </button>
-        <img class="card__img" src="${f.url}" alt="${f.alt}" />
+        <img class="card__img" src="${f.url}" alt="${f.alt || ''}" />
         <span class="card__title"></span>
       </a>
     </li>
@@ -40,12 +45,12 @@ function renderCardsIntoTrack(files) {
 async function loadServerImagesAndHydrate() {
   try {
     const files = await fetchServerImages();
-    // renderCardsIntoTrack(files);
+    renderCardsIntoTrack(files);      // ⬅️ add this line
     hydrateLikedStates();
     document.dispatchEvent(new Event('images:ready'));
   } catch (e) {
     console.error(e);
-    // Fallback: if API fails, just initialize slider with whatever is in HTML
+    // Fallback: if API fails, keep whatever static HTML exists (may be empty)
     hydrateLikedStates();
     document.dispatchEvent(new Event('images:ready'));
   }
@@ -358,7 +363,6 @@ document.addEventListener('images:ready', initSlider);
 document.addEventListener('DOMContentLoaded', () => {
   // Load images from server and hydrate likes, then init slider via event.
   loadServerImagesAndHydrate();
-
   // If someone removes the dynamic loader, still init with static HTML cards.
   if (document.querySelector('[data-track] .card')) {
     // Give the DOM a tick to layout, then init if images:ready never fires.
