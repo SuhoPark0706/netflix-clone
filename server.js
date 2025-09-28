@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const ROOT = __dirname;
 const FILE = path.join(ROOT, 'likes.json');
-IMAGES_DIR='./images/slider'
+IMAGES_DIR='./images/slider/'
 
 app.use(express.json());
 app.use(express.static(ROOT)); // serves index.html, script.js, images/, etc.

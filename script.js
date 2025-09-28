@@ -12,14 +12,6 @@ async function fetchServerImages() {
   return res.json(); // [{ url, alt }, ...]
 }
 
-const img_list = [
-  'main_poster.jpg',
-  'trigger.jpg',
-  'asqu.avif',
-  'lier.jpg'
-];
-
-
 function renderCardsIntoTrack(files) {
   const track = document.querySelector('[data-track]');
   if (!track) return;
